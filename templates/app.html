@@ -1,0 +1,258 @@
+{% extends "layout.html" %}
+
+{% block title %}
+App
+{% endblock %}
+
+{% block content %}
+
+<!-- 
+
+age - usia dalam tahun
+sex - jenis kelamin (1 = laki-laki; 0 = perempuan)
+cp - jenis nyeri dada
+trestbps - tekanan darah saat istirahat (dalam mm Hg saat masuk rumah sakit)
+chol - kadar kolesterol serum dalam mg/dl
+fbs - gula darah puasa > 120 mg/dl (1 = benar; 0 = salah)
+restecg - hasil elektrokardiografi saat istirahat
+thalach - detak jantung maksimum yang dicapai
+exang - angina yang diinduksi oleh latihan (1 = ya; 0 = tidak)
+oldpeak - depresi ST yang diinduksi oleh latihan relatif terhadap istirahat
+slope - kemiringan segmen ST saat latihan puncak
+ca - jumlah pembuluh darah utama (0-3) yang diwarnai oleh fluoroskopi
+thal - 3 = normal; 6 = cacat tetap; 7 = cacat reversibel
+target - memiliki penyakit atau tidak (1 = ya; 0 = tidak)
+-->
+<main class="w-full flex flex-col items-center justify-center px-4">
+    <div class="max-w-sm w-full text-gray-600">
+        <div class="text-center">
+            <img src="{{ url_for('static', filename='img/logoipsum-227.svg') }}" width="150" class="mx-auto" />
+            <div class="mt-5 space-y-2">
+                <h3 class="text-gray-800 text-2xl font-bold sm:text-3xl">Predict Heart Disease</h3>
+                <p class="">Enter the details below to predict heart disease.</p>
+            </div>
+        </div>
+        <form
+            onsubmit="event.preventDefault()"
+            class="mt-8 space-y-5"
+        >
+            <div>
+                <label class="font-medium">
+                    Age
+                </label>
+                <input
+                    type="number"
+                    required
+                    placeholder="Enter your age in years"
+                    class="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
+                />
+            </div>
+            <div>
+                <label class="font-medium">
+                    Sex
+                </label>
+                <select
+                    placeholder="Select your gender (1 = Male, 0 = Female)"
+                    class="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
+                >
+                    <option value="1">Male</option>
+                    <option value="0">Female</option>
+                </select>
+            </div>
+            <div>
+                <label class="font-medium">
+                    Chest Pain Type
+                </label>
+                <select
+                    required
+                    placeholder="Enter the type of chest pain (0-3)"
+                    class="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
+                >
+                    <option value="0">0 Typical Angina</option>
+                    <option value="1">1 Atypical Angina</option>
+                    <option value="2">2 Non-anginal Pain</option>
+                    <option value="3">3 Asymptomatic</option>
+                </select>
+            </div>
+            <div>
+                <label class="font-medium">
+                    Resting Blood Pressure
+                </label>
+                <input
+                    type="number"
+                    required
+                    placeholder="Enter your resting blood pressure in mm Hg"
+                    class="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
+                />
+            </div>
+            <div>
+                <label class="font-medium">
+                    Cholesterol
+                </label>
+                <input
+                    type="number"
+                    required
+                    placeholder="Enter your cholesterol level in mg/dl"
+                    class="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
+                />
+            </div>
+            <div>
+                <label class="font-medium">
+                    Fasting Blood Sugar
+                </label>
+                <select
+                    required
+                    placeholder="Is your fasting blood sugar > 120 mg/dl? (1 = True, 0 = False)"
+                    class="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
+                >
+                    <option value="1">True</option>
+                    <option value="0">False</option>
+                </select>
+            </div>
+            <div>
+                <label class="font-medium">
+                    Resting ECG
+                </label>
+                <select
+                    required
+                    placeholder="Enter the resting ECG results (0-2)"
+                    class="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
+                >
+                    <option value="0">0 Normal</option>
+                    <option value="1">1 Having ST-T wave abnormality</option>
+                    <option value="2">2 Showing probable or definite left ventricular hypertrophy</option>
+                </select>
+            </div>
+            <div>
+                <label class="font-medium">
+                    Max Heart Rate
+                </label>
+                <input
+                    type="number"
+                    required
+                    placeholder="Enter your maximum heart rate achieved"
+                    class="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
+                />
+            </div>
+            <div>
+                <label class="font-medium">
+                    Exercise Induced Angina
+                </label>
+                <select
+                    required
+                    placeholder="Do you have exercise induced angina? (1 = Yes, 0 = No)"
+                    class="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
+                >
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+            <div>
+                <label class="font-medium">
+                    ST Depression
+                </label>
+                <input
+                    type="number"
+                    required
+                    placeholder="Enter the ST depression induced by exercise relative to rest"
+                    class="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
+                />
+            </div>
+            <div>
+                <label class="font-medium">
+                    Slope of ST Segment
+                </label>
+                <select
+                    required
+                    placeholder="Enter the slope of the peak exercise ST segment (0-2)"
+                    class="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
+                >
+                    <option value="0">0 Upsloping</option>
+                    <option value="1">1 Flat</option>
+                    <option value="2">2 Downsloping</option>
+                </select>
+            </div>
+            <div>
+                <label class="font-medium">
+                    Number of Major Vessels
+                </label>
+                <select
+                    required
+                    placeholder="Enter the number of major vessels (0-3) colored by fluoroscopy"
+                    class="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
+                >
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+            </div>
+            <div>
+                <label class="font-medium">
+                    Thalassemia
+                </label>
+                <select
+                    required
+                    placeholder="Enter the thalassemia value (3 = Normal, 6 = Fixed Defect, 7 = Reversible Defect)"
+                    class="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
+                >
+                    <option value="3">3 Normal</option>
+                    <option value="6">6 Fixed Defect</option>
+                    <option value="7">7 Reversible Defect</option>
+                </select>
+            </div>
+            <button
+                class="w-full px-4 py-2 text-white font-medium bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-600 rounded-lg duration-150"
+            >
+                Predict Now
+            </button>
+        </form>
+    </div>
+</main>
+<script>
+    const tooltips = {
+        "Age": "Enter your age in years. This helps in determining the risk factor based on age, as the risk of heart disease increases with age.",
+        "Sex": "Select your gender. This is used to analyze the risk based on gender (1 = Male, 0 = Female). Men are generally at higher risk of heart disease than women.",
+        "Chest Pain Type": "Enter the type of chest pain you experience (0-3). This helps in identifying the type of angina, which can be an indicator of heart disease.",
+        "Resting Blood Pressure": "Enter your resting blood pressure in mm Hg. High blood pressure can damage arteries and increase the risk of heart disease.",
+        "Cholesterol": "Enter your cholesterol level in mg/dl. High cholesterol levels can lead to the buildup of plaques in arteries, increasing the risk of heart disease.",
+        "Fasting Blood Sugar": "Is your fasting blood sugar > 120 mg/dl? (1 = True, 0 = False). High fasting blood sugar levels can indicate diabetes, which is a risk factor for heart disease.",
+        "Resting ECG": "Enter the resting ECG results (0-2). Abnormal ECG results can indicate heart problems, including heart disease.",
+        "Max Heart Rate": "Enter your maximum heart rate achieved. This helps in determining your cardiovascular fitness.",
+        "Exercise Induced Angina": "Do you have exercise induced angina? (1 = Yes, 0 = No). This helps in identifying exercise-related chest pain.",
+        "ST Depression": "Enter the ST depression induced by exercise relative to rest. This helps in identifying ischemia.",
+        "Slope of ST Segment": "Enter the slope of the peak exercise ST segment (0-2). This helps in analyzing the heart's response to exercise.",
+        "Number of Major Vessels": "Enter the number of major vessels (0-3) colored by fluoroscopy. This helps in identifying blockages in the arteries.",
+        "Thalassemia": "Enter the thalassemia value (3 = Normal, 6 = Fixed Defect, 7 = Reversible Defect). This helps in identifying blood disorders."
+    };
+
+    document.querySelectorAll('label').forEach(label => {
+        label.addEventListener('mouseover', function() {
+            const tooltip = document.createElement('div');
+            tooltip.className = 'tooltip';
+            tooltip.innerText = tooltips[this.innerText.trim()];
+            document.body.appendChild(tooltip);
+            const rect = this.getBoundingClientRect();
+            tooltip.style.left = `${rect.left + window.scrollX}px`;
+            tooltip.style.top = `${rect.bottom + window.scrollY}px`;
+        });
+
+        label.addEventListener('mouseout', function() {
+            document.querySelectorAll('.tooltip').forEach(tooltip => tooltip.remove());
+        });
+    });
+</script>
+<style>
+    .tooltip {
+        position: absolute;
+        background-color: #333;
+        color: #fff;
+        padding: 5px;
+        border-radius: 5px;
+        z-index: 1000;
+        font-size: 12px;
+    }
+</style>
+
+
+{% endblock %}
