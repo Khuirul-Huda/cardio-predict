@@ -10,7 +10,14 @@ def home():
 def launch():
     return render_template('app.html')
 
+@app.post('/app')
+def predict():
+    return render_template('app.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
+
+def train_model():
+    pass
 
 
