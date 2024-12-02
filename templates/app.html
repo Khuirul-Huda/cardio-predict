@@ -33,19 +33,19 @@ target - memiliki penyakit atau tidak (1 = ya; 0 = tidak)
             </div>
         </div>
         <div class="flex flex-row gap-10 justify-center">
-            <form onsubmit="event.preventDefault()" class="mt-8 space-y-5 max-w-sm w-full">
+            <form action="/app" method="post" class="mt-8 space-y-5 max-w-sm w-full">
                 <div>
                     <label class="font-medium">
                         Age
                     </label>
-                    <input type="number" required placeholder="Enter your age in years"
+                    <input name="age" type="number" required placeholder="Enter your age in years"
                         class="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg" />
                 </div>
                 <div>
                     <label class="font-medium">
                         Sex
                     </label>
-                    <select placeholder="Select your gender (1 = Male, 0 = Female)"
+                    <select name="sex" placeholder="Select your gender (1 = Male, 0 = Female)"
                         class="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg">
                         <option value="1">Male</option>
                         <option value="0">Female</option>
@@ -55,7 +55,7 @@ target - memiliki penyakit atau tidak (1 = ya; 0 = tidak)
                     <label class="font-medium">
                         Chest Pain Type
                     </label>
-                    <select required placeholder="Enter the type of chest pain (0-3)"
+                    <select name="cp" required placeholder="Enter the type of chest pain (0-3)"
                         class="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg">
                         <option value="0">0 Typical Angina</option>
                         <option value="1">1 Atypical Angina</option>
@@ -67,21 +67,21 @@ target - memiliki penyakit atau tidak (1 = ya; 0 = tidak)
                     <label class="font-medium">
                         Resting Blood Pressure
                     </label>
-                    <input type="number" required placeholder="Enter your resting blood pressure in mm Hg"
+                    <input name="trestbps" type="number" required placeholder="Enter your resting blood pressure in mm Hg"
                         class="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg" />
                 </div>
                 <div>
                     <label class="font-medium">
                         Cholesterol
                     </label>
-                    <input type="number" required placeholder="Enter your cholesterol level in mg/dl"
+                    <input name="chol" type="number" required placeholder="Enter your cholesterol level in mg/dl"
                         class="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg" />
                 </div>
                 <div>
                     <label class="font-medium">
                         Fasting Blood Sugar
                     </label>
-                    <select required placeholder="Is your fasting blood sugar > 120 mg/dl? (1 = True, 0 = False)"
+                    <select name="fbs" required placeholder="Is your fasting blood sugar > 120 mg/dl? (1 = True, 0 = False)"
                         class="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg">
                         <option value="1">True</option>
                         <option value="0">False</option>
@@ -91,7 +91,7 @@ target - memiliki penyakit atau tidak (1 = ya; 0 = tidak)
                     <label class="font-medium">
                         Resting ECG
                     </label>
-                    <select required placeholder="Enter the resting ECG results (0-2)"
+                    <select name="restecg" required placeholder="Enter the resting ECG results (0-2)"
                         class="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg">
                         <option value="0">0 Normal</option>
                         <option value="1">1 Having ST-T wave abnormality</option>
@@ -102,14 +102,14 @@ target - memiliki penyakit atau tidak (1 = ya; 0 = tidak)
                     <label class="font-medium">
                         Max Heart Rate
                     </label>
-                    <input type="number" required placeholder="Enter your maximum heart rate achieved"
+                    <input name="thalach" type="number" required placeholder="Enter your maximum heart rate achieved"
                         class="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg" />
                 </div>
                 <div>
                     <label class="font-medium">
                         Exercise Induced Angina
                     </label>
-                    <select required placeholder="Do you have exercise induced angina? (1 = Yes, 0 = No)"
+                    <select name="exang" required placeholder="Do you have exercise induced angina? (1 = Yes, 0 = No)"
                         class="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg">
                         <option value="1">Yes</option>
                         <option value="0">No</option>
@@ -119,7 +119,7 @@ target - memiliki penyakit atau tidak (1 = ya; 0 = tidak)
                     <label class="font-medium">
                         ST Depression
                     </label>
-                    <input type="number" required
+                    <input name="oldpeak" type="number" required
                         placeholder="Enter the ST depression induced by exercise relative to rest"
                         class="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg" />
                 </div>
@@ -127,7 +127,7 @@ target - memiliki penyakit atau tidak (1 = ya; 0 = tidak)
                     <label class="font-medium">
                         Slope of ST Segment
                     </label>
-                    <select required placeholder="Enter the slope of the peak exercise ST segment (0-2)"
+                    <select name="slope" required placeholder="Enter the slope of the peak exercise ST segment (0-2)"
                         class="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg">
                         <option value="0">0 Upsloping</option>
                         <option value="1">1 Flat</option>
@@ -138,7 +138,7 @@ target - memiliki penyakit atau tidak (1 = ya; 0 = tidak)
                     <label class="font-medium">
                         Number of Major Vessels
                     </label>
-                    <select required placeholder="Enter the number of major vessels (0-3) colored by fluoroscopy"
+                    <select name="ca" required placeholder="Enter the number of major vessels (0-3) colored by fluoroscopy"
                         class="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg">
                         <option value="0">0</option>
                         <option value="1">1</option>
@@ -150,7 +150,7 @@ target - memiliki penyakit atau tidak (1 = ya; 0 = tidak)
                     <label class="font-medium">
                         Thalassemia
                     </label>
-                    <select required
+                    <select name="thal" required
                         placeholder="Enter the thalassemia value (3 = Normal, 6 = Fixed Defect, 7 = Reversible Defect)"
                         class="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg">
                         <option value="3">3 Normal</option>
@@ -158,7 +158,7 @@ target - memiliki penyakit atau tidak (1 = ya; 0 = tidak)
                         <option value="7">7 Reversible Defect</option>
                     </select>
                 </div>
-                <button
+                <button type="submit"
                     class="w-full px-4 py-2 text-white font-medium bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-600 rounded-lg duration-150">
                     Predict Now
                 </button>
@@ -167,7 +167,7 @@ target - memiliki penyakit atau tidak (1 = ya; 0 = tidak)
                 <div class="border shadow-xl rounded-xl p-5 sticky top-10">
                     <h3 class="text-lg">Prediction Result</h3>
 
-                    <div class="mt-8 mx-auto px-4 md:px-8 ">
+                    <div id="run-prediction" class="mt-8 mx-auto px-4 md:px-8 ">
                         <div class="flex justify-between p-4 rounded-md bg-blue-50 border border-blue-300">
                             <div class="flex gap-3 sm:items-center">
                                 <div>
@@ -182,7 +182,7 @@ target - memiliki penyakit atau tidak (1 = ya; 0 = tidak)
                         </div>
                     </div>
 
-                    <div class="mt-8 mx-4 px-4 rounded-md border-l-4 border-red-500 bg-red-50 md:max-w-sm md:mx-auto">
+                    <div id="positive-result" class="hidden mt-8 mx-4 px-4 rounded-md border-l-4 border-red-500 bg-red-50 md:max-w-sm md:mx-auto">
                         <div class="flex justify-between py-3">
                           <div class="flex">
                             <div>
@@ -205,7 +205,7 @@ target - memiliki penyakit atau tidak (1 = ya; 0 = tidak)
                         </div>
                       </div>
 
-                      <div class="mt-8 mx-4 px-4 rounded-md border-l-4 border-green-500 bg-green-50 md:max-w-sm md:mx-auto">
+                      <div id="negative-result" class="hidden mt-8 mx-4 px-4 rounded-md border-l-4 border-green-500 bg-green-50 md:max-w-sm md:mx-auto">
                         <div class="flex justify-between py-3">
                           <div class="flex">
                             <div>
@@ -267,6 +267,39 @@ target - memiliki penyakit atau tidak (1 = ya; 0 = tidak)
             document.querySelectorAll('.tooltip').forEach(tooltip => tooltip.remove());
         });
     });
+
+
+    const positiveResult = document.getElementById('positive-result');
+    const negativeResult = document.getElementById('negative-result');
+    const runPrediction = document.getElementById('run-prediction');
+
+    document.querySelector('form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const formData = new FormData(this);
+        fetch('/app', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Handle the response data here
+            if (data.prediction === 1) {
+                runPrediction.classList.add('hidden');
+                positiveResult.classList.remove('hidden');
+                negativeResult.classList.add('hidden');
+            } else {
+                runPrediction.classList.add('hidden');
+                negativeResult.classList.remove('hidden');
+                positiveResult.classList.add('hidden');
+            }
+            console.log(data);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    });
+
+
 </script>
 <style>
     .tooltip {
