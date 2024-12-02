@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "build-css": "npx tailwindcss -i ./static/src/input.css -o ./static/css/main.css --watch",
+    "css": "npx tailwindcss -i ./static/src/input.css -o ./static/css/main.css --watch",
     "dev": "python3 app.py"
   },
   "dependencies": {
