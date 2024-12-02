@@ -41,12 +41,6 @@ def predict():
     print(f"Prediction: {result}")
     return jsonify({'result': result})
 
-    
-
-
-
-
-
 # Step 1: Data Preparation
 def load_data():
     url = "https://raw.githubusercontent.com/ajinkyalahade/Heart-Disease---Classifications-Machine-Learning-/refs/heads/master/heart.csv"
