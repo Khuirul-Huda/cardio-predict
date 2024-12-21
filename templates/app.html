@@ -282,7 +282,7 @@ target - memiliki penyakit atau tidak (1 = ya; 0 = tidak)
         })
         .then(response => response.json())
         .then(data => {
-            if (data.prediction === 1) {
+            if (data.result === 'Positive') {
                 runPrediction.classList.add('hidden');
                 positiveResult.classList.remove('hidden');
                 negativeResult.classList.add('hidden');
